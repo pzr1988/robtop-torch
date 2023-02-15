@@ -35,9 +35,14 @@ std::vector<int> readTriangles(const std::string& path) {
   return faces;
 }
 int main() {
-  std::string path="cube.obj";
+  //std::string path="cube.obj";
+  std::string path="sphere.obj";
   std::vector<float> pcoords=readVertices3D(path);
   std::vector<int> facevertices=readTriangles(path);
+  for(int i=0; i<(int)pcoords.size(); i+=3) {
+    pcoords[i+1]*=0.5;
+    pcoords[i+2]*=0.25;
+  }
   setParameters(0,0,0,0,0,1,1e-3,128,1,0.3,2,false,false);
 
   setBoundaryCondition([](double pos[3])->bool {
@@ -45,7 +50,7 @@ int main() {
   },[](double pos[3])->bool {
     return pos[0]>0.9;
   },[](double pos[3])->Eigen::Matrix<double,3,1> {
-    return Eigen::Matrix<double,3,1>(-1,0,0);
+    return Eigen::Matrix<double,3,1>(1,0,0);
   });
   buildGrids(pcoords,facevertices);
 

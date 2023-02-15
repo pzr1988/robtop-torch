@@ -7,6 +7,7 @@
 #include "Eigen/IterativeLinearSolvers"
 #include "Eigen/SparseQR"
 #include "binaryIO.h"
+#include "VTKWriter.h"
 #include "openvdb_wrapper_t.h"
 #include "tictoc.h"
 #include <set>
@@ -193,6 +194,8 @@ void grid::HierarchyGrid::genFromMesh(const std::vector<float>& pcoords, const s
 
   // The bits in a word are listed starting from high order in voxelizer, so we reverse the bits in all words
   wordReverse_g(solid_bit.size(), solid_bit.data());
+
+  //writeGridVTK("grid.vtk", solid_bit, out_reso, out_box);
 
   std::vector<unsigned int> inci_vbit;
 
@@ -1075,6 +1078,8 @@ _setFlag:
       }
     }
   }
+
+  //writeVertVTK("vert.vtk",supportpos,loadpos,loadforce);
 
   printf("-- found %d fixed nodes, %d load nodes\n", nfixnodes, loadvid.size());
 

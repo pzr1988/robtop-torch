@@ -9,13 +9,12 @@
 #include "util_io.h"
 
 voxinfo voxelize_mesh(
-	const std::vector<float>& vertex_coords, const std::vector<int>& triface_ids,
-	int prefered_resolution, std::vector<unsigned int>& solid_bits, int out_resolution[3], float out_box[2][3]
+  const std::vector<float>& vertex_coords, const std::vector<int>& triface_ids,
+  int prefered_resolution, std::vector<unsigned int>& solid_bits, int out_resolution[3], float out_box[2][3]
 );
 
 void hierarchy_voxelize_mesh(
-	const std::vector<float>& vertex_coords, const std::vector<int>& triface_ids, int nlayer,
-	int prefered_resolution, std::vector<std::vector<unsigned int>>& solid_bits, std::vector<std::array<int, 3>> out_resolutions, std::vector<std::pair<std::array<float, 3>, std::array<float, 3> >> out_boxs
+  const std::vector<float>& vertex_coords, const std::vector<int>& triface_ids, int nlayer,
+  int prefered_resolution, std::vector<std::vector<unsigned int>>& solid_bits, std::vector<std::array<int, 3>> out_resolutions, std::vector<std::pair<std::array<float, 3>, std::array<float, 3> >> out_boxs
 );
-
 

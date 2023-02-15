@@ -38,9 +38,10 @@ MACRO(SEARCH_SOURCE NAME DIRPRJ)
   FILE(GLOB_RECURSE cuda_source${NAME} ${PROJECT_SOURCE_DIR}/${DIRPRJ}/*.cu ${PROJECT_SOURCE_DIR}/${DIRPRJ}/*.cuh)
 ENDMACRO(SEARCH_SOURCE)
 SEARCH_SOURCE(Grid Grid)
+#SEARCH_SOURCE(Trimesh2 extern/trimesh2)
 
 #BUILD LIBRARY
-ADD_LIBRARY(Grid STATIC ${sourceGrid} ${headerGrid})
+ADD_LIBRARY(Grid STATIC ${sourceGrid} ${headerGrid})# ${sourceTrimesh2} ${headerTrimesh2})
 TARGET_COMPILE_OPTIONS(Grid PUBLIC "-std=c++17")
 TARGET_LINK_LIBRARIES(Grid stdc++fs ${ALL_LIBRARIES})
 #BUILD LIBRARY (GPU part)

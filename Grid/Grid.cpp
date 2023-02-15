@@ -1740,7 +1740,8 @@ void Grid::solve_fem_host(void) {
   //printf("-- coarse system error %lf\n", (fullK*uhost - fhost).norm());
 
   // if preffered solver failed, try alternative solver
-  if (solverhost.info() != Eigen::Success) {
+  if (svd.info() != Eigen::Success) {
+    //if (solverhost.info() != Eigen::Success) {
     printf("-- \033[31mHost solver failed \033[0m\n");
     uhost.fill(0);
   }
